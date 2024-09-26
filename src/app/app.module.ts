@@ -8,13 +8,17 @@ import { HttpClientModule } from '@angular/common/http';  // Import HttpClientMo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { RegisterComponent } from './auth/register/register.component';
-
+import { BookListComponent } from './book-list/book-list.component';
+import { CategoryListComponent } from './category-list/category-list.component';
+import { BookService } from './services/book.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    BookListComponent,
+    CategoryListComponent
 
   ],
   imports: [
@@ -26,7 +30,9 @@ import { RegisterComponent } from './auth/register/register.component';
     ReactiveFormsModule,
     RouterModule
   ],
-  providers: [],
+  providers: [
+    BookService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

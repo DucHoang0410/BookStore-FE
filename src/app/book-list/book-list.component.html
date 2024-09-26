@@ -1,0 +1,24 @@
+<div class="book-list">
+    <h2>Danh sách sách</h2>
+  
+    <div *ngIf="books.length > 0; else noBooks" class="books-container">
+      <div *ngFor="let book of books" class="book-item">
+        <img *ngIf="book.imageUrl" [src]="book.imageUrl" alt="Image of {{ book.title }}" class="book-image">
+        <div class="book-details">
+          <h3>{{ book.title }}</h3>
+          <p><strong>Tác giả:</strong> {{ book.author }}</p>
+          <p><strong>Mô tả:</strong> {{ book.description }}</p>
+          <p><strong>Giá:</strong> {{ book.price }} VND</p>
+          <p><strong>Kho:</strong> {{ book.stock }} cuốn</p>
+          <p><strong>Danh mục:</strong> {{ book.category.name }}</p>
+          <button (click)="addToCart(book)" class="btn btn-primary">Thêm vào giỏ hàng</button>
+          <button (click)="deleteBook(book.id)" class="btn btn-danger">Xóa sách</button> <!-- Nút xóa sách -->
+        </div>
+      </div>
+    </div>
+  
+    <ng-template #noBooks>
+      <p>Không có sách nào trong hệ thống.</p>
+    </ng-template>
+  </div>
+  

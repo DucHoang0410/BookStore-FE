@@ -1,0 +1,92 @@
+/* Container của toàn bộ danh sách sách */
+.book-list {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 1200px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .book-list h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #333;
+    text-transform: uppercase;
+  }
+  
+  /* Bố cục dạng lưới cho các sách */
+  .books-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  /* Mỗi sách hiển thị dưới dạng card */
+  .book-item {
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-align: left;
+  }
+  
+  .book-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Hình ảnh của sách */
+  .book-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  
+  /* Chi tiết sách */
+  .book-details h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .book-details p {
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #666;
+  }
+  
+  /* Nút thêm vào giỏ hàng */
+  .btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive cho màn hình nhỏ */
+  @media (max-width: 768px) {
+    .book-details {
+      text-align: center;
+    }
+  
+    .book-image {
+      height: 150px;
+    }
+  }
+  
