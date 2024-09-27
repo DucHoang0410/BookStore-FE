@@ -8,6 +8,7 @@ import { BookService } from '../services/book.service';
 })
 export class BookListComponent implements OnInit {
   books: any[] = [];
+  searchTerm: string = ''; // Biến lưu từ khóa tìm kiếm
 
   constructor(private bookService: BookService) {}
 
@@ -28,14 +29,31 @@ export class BookListComponent implements OnInit {
     );
   }
 
+  // Tìm kiếm sách theo tiêu đề
+  searchBooks(): void {
+    if (this.searchTerm.trim() === '') {
+      this.loadBooks(); // Nếu ô tìm kiếm trống, tải lại tất cả sách
+      return;
+    }
+
+    this.bookService.searchBooks(this.searchTerm).subscribe(
+      (data) => {
+        console.log('Books found:', data);
+        this.books = data;
+      },
+      (error) => {
+        console.error('Failed to search books:', error);
+      }
+    );
+  }
+
   // Xóa sách và cập nhật danh sách sau khi xóa
   deleteBook(id: number): void {
     if (confirm('Bạn có chắc chắn muốn xóa sách này?')) {
       this.bookService.deleteBook(id).subscribe(
         (response) => {
           console.log('Book deleted:', response);
-          // Tải lại danh sách sau khi xóa thành công
-          this.loadBooks();
+          this.loadBooks(); // Cập nhật danh sách sách sau khi xóa
         },
         (error) => {
           console.error('Failed to delete book:', error);

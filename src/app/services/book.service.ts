@@ -24,4 +24,17 @@ export class BookService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.delete(`${this.apiUrl}/delete/${id}`, { headers });
   }
+   // Phương thức tìm kiếm sách theo tiêu đề
+   searchBooks(title: string): Observable<any> {
+    const token = localStorage.getItem('token'); // Lấy token từ localStorage
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${this.apiUrl}/search`, {
+      params: {
+        title: title
+      },
+      headers
+    });
+  }
+
+
 }

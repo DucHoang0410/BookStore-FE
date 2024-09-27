@@ -1,6 +1,13 @@
 <div class="book-list">
     <h2>Danh sách sách</h2>
   
+    <!-- Ô tìm kiếm -->
+    <div class="search-bar">
+      <input type="text" [(ngModel)]="searchTerm" placeholder="Tìm kiếm sách theo tiêu đề" />
+      <button (click)="searchBooks()" class="btn btn-primary">Tìm kiếm</button>
+    </div>
+  
+    <!-- Danh sách sách -->
     <div *ngIf="books.length > 0; else noBooks" class="books-container">
       <div *ngFor="let book of books" class="book-item">
         <img *ngIf="book.imageUrl" [src]="book.imageUrl" alt="Image of {{ book.title }}" class="book-image">
@@ -12,7 +19,7 @@
           <p><strong>Kho:</strong> {{ book.stock }} cuốn</p>
           <p><strong>Danh mục:</strong> {{ book.category.name }}</p>
           <button (click)="addToCart(book)" class="btn btn-primary">Thêm vào giỏ hàng</button>
-          <button (click)="deleteBook(book.id)" class="btn btn-danger">Xóa sách</button> <!-- Nút xóa sách -->
+          <button (click)="deleteBook(book.id)" class="btn btn-danger">Xóa sách</button>
         </div>
       </div>
     </div>
